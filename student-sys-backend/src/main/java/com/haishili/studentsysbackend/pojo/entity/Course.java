@@ -9,4 +9,5 @@ public class Course {
     private String teacher;
     private Integer maxCapacity;
     private Integer selectedCount;
+    private Integer point;
 }

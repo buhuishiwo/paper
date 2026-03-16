@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haishili.studentsysbackend.mapper.SelectionMapper">
+
+    <resultMap id="SelectionResultMap" type="com.haishili.studentsysbackend.pojo.entity.Selection">
+        <id column="id" property="id"/>
+        <result column="student_id" property="studentId"/>
+        <result column="course_id" property="courseId"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <select id="findByStudentAndCourse" resultMap="SelectionResultMap">
+        SELECT *
+        FROM selection
+        WHERE student_id = #{studentId}
+          AND course_id = #{courseId}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO selection (student_id, course_id, create_time)
+        VALUES (#{studentId}, #{courseId}, #{createTime})
+    </insert>
+</mapper>
